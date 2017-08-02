@@ -5,28 +5,89 @@ namespace Woeplanet\API;
 class Client extends AbstractClient {
     const USER_AGENT = 'Woeplanet API PHP wrapper v1.0.0';
 
-    const METHOD_PLACE = 'place';
-    const METHOD_PLACETYPE = 'placetype';
-    const METHOD_PLACETYPES = 'placetypes';
-    const METHOD_SEARCH = 'search';
-    const METHOD_META = 'meta';
-    const METHOD_SCHEMA = 'schema';
+    const METHOD_PLACE = 'v1/place';
+    const METHOD_PLACETYPE = 'v1/placetype';
+    const METHOD_PLACETYPES = 'v1/placetypes';
+    const METHOD_SEARCH = 'v1/search';
+    const METHOD_SEARCH_FIELDS = 'v1/search/fields';
+    const METHOD_SEARCH_NAMES = 'v1/search/names';
+    const METHOD_SEARCH_PREFERRED = 'v1/search/preferred';
+    const METHOD_SEARCH_ALTERNATE = 'v1/search/alternate';
+    const METHOD_SEARCH_NAME = 'v1/search/name';
+    const METHOD_SEARCH_NULL_ISLAND = 'v1/search/null-island';
+    const METHOD_META = 'v1/meta';
 
     private static $defaults = [
         self::METHOD_PLACE => [
-            'boundary' => false
+            'boundary' => false,
+            'superceded' => true
         ],
         self::METHOD_PLACETYPE => [],
         self::METHOD_PLACETYPES => [],
         self::METHOD_SEARCH => [
             'from' => 0,
             'size' => 50,
+            'unknown' => false,
+            'boundary' => false,
+            'superceded' => true,
             'facets' => false,
-            'raw_query' => false
-
+            'query' => false
         ],
-        self::METHOD_META => [],
-        self::METHOD_SCHEMA => []
+        self::METHOD_SEARCH_FIELDS => [
+            'from' => 0,
+            'size' => 50,
+            'unknown' => false,
+            'boundary' => false,
+            'superceded' => true,
+            'facets' => false,
+            'query' => false
+        ],
+        self::METHOD_SEARCH_NAMES => [
+            'from' => 0,
+            'size' => 50,
+            'unknown' => false,
+            'boundary' => false,
+            'superceded' => true,
+            'facets' => false,
+            'query' => false
+        ],
+        self::METHOD_SEARCH_PREFERRED => [
+            'from' => 0,
+            'size' => 50,
+            'unknown' => false,
+            'boundary' => false,
+            'superceded' => true,
+            'facets' => false,
+            'query' => false
+        ],
+        self::METHOD_SEARCH_ALTERNATE => [
+            'from' => 0,
+            'size' => 50,
+            'unknown' => false,
+            'boundary' => false,
+            'superceded' => true,
+            'facets' => false,
+            'query' => false
+        ],
+        self::METHOD_SEARCH_NAME => [
+            'from' => 0,
+            'size' => 50,
+            'unknown' => false,
+            'boundary' => false,
+            'superceded' => true,
+            'facets' => false,
+            'query' => false
+        ],
+        self::METHOD_SEARCH_NULL_ISLAND => [
+            'from' => 0,
+            'size' => 50,
+            'unknown' => false,
+            'boundary' => false,
+            'superceded' => true,
+            'facets' => false,
+            'query' => false
+        ],
+        self::METHOD_META => []
     ];
 
     public function __construct($options) {
@@ -57,15 +118,45 @@ class Client extends AbstractClient {
         return $this->getResponse($uri);
     }
 
-    public function meta($params=[]) {
-        $params = $this->buildParams(self::METHOD_META, $params);
-        $uri = $this->buildUri(self::METHOD_META, NULL, $params);
+    public function searchFields($params=[]) {
+        $params = $this->buildParams(self::METHOD_SEARCH_FIELDS, $params);
+        $uri = $this->buildUri(self::METHOD_SEARCH_FIELDS, NULL, $params);
         return $this->getResponse($uri);
     }
 
-    public function schema($params=[]) {
-        $params = $this->buildParams(self::METHOD_SCHEMA, $params);
-        $uri = $this->buildUri(self::METHOD_SCHEMA, NULL, $params);
+    public function searchNames($params=[]) {
+        $params = $this->buildParams(self::METHOD_SEARCH_NAMES, $params);
+        $uri = $this->buildUri(self::METHOD_SEARCH_NAMES, NULL, $params);
+        return $this->getResponse($uri);
+    }
+
+    public function searchPreferred($params=[]) {
+        $params = $this->buildParams(self::METHOD_SEARCH_PREFERRED, $params);
+        $uri = $this->buildUri(self::METHOD_SEARCH_PREFERRED, NULL, $params);
+        return $this->getResponse($uri);
+    }
+
+    public function searchAlternate($params=[]) {
+        $params = $this->buildParams(self::METHOD_SEARCH_ALTERNATE, $params);
+        $uri = $this->buildUri(self::METHOD_SEARCH_ALTERNATE, NULL, $params);
+        return $this->getResponse($uri);
+    }
+
+    public function searchName($params=[]) {
+        $params = $this->buildParams(self::METHOD_SEARCH_NAME, $params);
+        $uri = $this->buildUri(self::METHOD_SEARCH_NAME, NULL, $params);
+        return $this->getResponse($uri);
+    }
+
+    public function searchNullIsland($params=[]) {
+        $params = $this->buildParams(self::METHOD_SEARCH_NULL_ISLAND, $params);
+        $uri = $this->buildUri(self::METHOD_SEARCH_NULL_ISLAND, NULL, $params);
+        return $this->getResponse($uri);
+    }
+
+    public function meta($params=[]) {
+        $params = $this->buildParams(self::METHOD_META, $params);
+        $uri = $this->buildUri(self::METHOD_META, NULL, $params);
         return $this->getResponse($uri);
     }
 
