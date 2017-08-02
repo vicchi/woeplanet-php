@@ -1,14 +1,12 @@
 {
-    "name": "woeplanet/woeplanet-api-client",
+    "name": "woeplanet/woeplanet-php",
     "description": "PHP client wrapper for the Woeplanet API",
     "type": "library",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Gary Gale",
-            "email": "gary@vicchi.org"
-        }
-    ],
+    "authors": [{
+        "name": "Gary Gale",
+        "email": "gary@vicchi.org"
+    }],
     "require": {
         "php": ">=5.4"
     },
