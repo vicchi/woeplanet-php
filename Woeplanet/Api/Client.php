@@ -8,6 +8,8 @@ class Client extends AbstractClient {
     const METHOD_PLACE = 'v1/place';
     const METHOD_PLACETYPE = 'v1/placetype';
     const METHOD_PLACETYPES = 'v1/placetypes';
+    const METHOD_COUNTRY = 'v1/country';
+    const METHOD_COUNTRIES = 'v1/countries';
     const METHOD_SEARCH = 'v1/search';
     const METHOD_SEARCH_FIELDS = 'v1/search/fields';
     const METHOD_SEARCH_NAMES = 'v1/search/names';
@@ -24,6 +26,16 @@ class Client extends AbstractClient {
         ],
         self::METHOD_PLACETYPE => [],
         self::METHOD_PLACETYPES => [],
+        self::METHOD_COUNTRY => [
+            'boundary' => false,
+            'superceded' => true
+        ],
+        self::METHOD_COUNTRIES => [
+            'from' => 0,
+            'size' => 50,
+            'boundary' => false,
+            'superceded' => true
+        ],
         self::METHOD_SEARCH => [
             'from' => 0,
             'size' => 50,
@@ -109,6 +121,18 @@ class Client extends AbstractClient {
     public function placetypes($params=[]) {
         $params = $this->buildParams(self::METHOD_PLACETYPES, $params);
         $uri = $this->buildUri(self::METHOD_PLACETYPES, NULL, $params);
+        return $this->getResponse($uri);
+    }
+
+    public function country($iso, $params=[]) {
+        $params = $this->buildParams(self::METHOD_COUNTRY, $params);
+        $uri = $this->buildUri(self::METHOD_COUNTRY, $iso, $params);
+        return $this->getResponse($uri);
+    }
+
+    public function countries($params=[]) {
+        $params = $this->buildParams(self::METHOD_COUNTRIES, $params);
+        $uri = $this->buildUri(self::METHOD_COUNTRIES, NULL, $params);
         return $this->getResponse($uri);
     }
 
